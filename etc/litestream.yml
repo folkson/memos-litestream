@@ -2,9 +2,15 @@ snapshot:
   interval: 24h
   retention: 168h
 
+levels:
+  - interval: 1h
+  - interval: 6h
+  - interval: 24h
+
 dbs:
   - path: $DB_PATH
     replica:
       url: s3://$LITESTREAM_REPLICA_BUCKET/$LITESTREAM_REPLICA_PATH
       endpoint: $LITESTREAM_REPLICA_ENDPOINT
       force-path-style: true
+      sync-interval: 5m
